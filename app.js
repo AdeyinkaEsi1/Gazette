@@ -23,7 +23,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 const corsOptions = {
-  origin: ['http://127.0.0.1:5500', 'http://localhost:5500'],  // Allow both localhost and 127.0.0.1
+  // origin: ['http://127.0.0.1:5500', 'http://localhost:5500'],
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allow these HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization']  // Allow these headers
 };
