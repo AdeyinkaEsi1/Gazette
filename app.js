@@ -41,6 +41,4 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-module.exports = (req, res) => {
-  app(req, res);
-};
+module.exports = app;
