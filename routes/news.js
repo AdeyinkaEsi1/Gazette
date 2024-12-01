@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/newsapi', async (req, res) => {
     const apikey = process.env.NEWSAPI_KEY;
-    const apiUrl = `https://newsapi.org/v2/top-headlines/sources?country=us&apiKey=${apikey}`;
+    const apiUrl = `https://newsapi.org/v2/top-headlines/sources?country=gb&apiKey=${apikey}`;
 
     try {
         const fetch = (await import('node-fetch')).default;
@@ -19,9 +19,6 @@ router.get('/newsapi', async (req, res) => {
         }
 
         const data = await response.json();
-        const ids = data.sources.map(source => source.id)
-        // const desc = data.sources.map(item => item.description)
-        res.json({ ids });
         res.json(data);
     } catch (error) {
         console.error('Error:', error.message);
@@ -30,8 +27,8 @@ router.get('/newsapi', async (req, res) => {
 });
 
 router.get('/nigeria', async (req, res) => {
-    const apikey = process.env.MEDIASTACK_KEY;
-    const apiUrl2 = `http://api.mediastack.com/v1/news?access_key=${apikey}&countries=ng&sources=punch, guardian, tribune`;
+    const apikey = process.env.MEDIASTACK_KEY2;
+    const apiUrl2 = `http://api.mediastack.com/v1/news?access_key=${apikey}&countries=ng&sources=tribune`;
     try {
         const fetch = (await import('node-fetch')).default;
         const response = await fetch(apiUrl2)
@@ -48,7 +45,7 @@ router.get('/nigeria', async (req, res) => {
 
 
 router.get('/usa', async (req, res) => {
-    const apikey = process.env.MEDIASTACK_KEY;
+    const apikey = process.env.MEDIASTACK_KEY2;
     const apiUrl2 = `http://api.mediastack.com/v1/news?access_key=${apikey}&countries=us&sources=cnn, bbc`;
 
     try {
@@ -66,7 +63,7 @@ router.get('/usa', async (req, res) => {
 })
 
 router.get('/uk', async (req, res) => {
-    const apikey = process.env.MEDIASTACK_KEY;
+    const apikey = process.env.MEDIASTACK_KEY2;
     const apiUrl2 = `http://api.mediastack.com/v1/news?access_key=${apikey}&countries=gb&sources=the mirror, metro`;
 
     try {
@@ -82,8 +79,6 @@ router.get('/uk', async (req, res) => {
         res.status(500).send('Error fetching news')
     }
 })
-
-
 
 
 module.exports = router
