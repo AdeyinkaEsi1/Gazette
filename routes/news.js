@@ -27,7 +27,7 @@ router.get('/newsapi', async (req, res) => {
 });
 
 router.get('/nigeria', async (req, res) => {
-    const apikey = process.env.MEDIASTACK_KEY2;
+    const apikey = process.env.MEDIASTACK_KEY3;
     const apiUrl2 = `http://api.mediastack.com/v1/news?access_key=${apikey}&countries=ng&sources=tribune`;
     try {
         const fetch = (await import('node-fetch')).default;
@@ -45,7 +45,7 @@ router.get('/nigeria', async (req, res) => {
 
 
 router.get('/usa', async (req, res) => {
-    const apikey = process.env.MEDIASTACK_KEY2;
+    const apikey = process.env.MEDIASTACK_KEY3;
     const apiUrl2 = `http://api.mediastack.com/v1/news?access_key=${apikey}&countries=us&sources=cnn, bbc`;
 
     try {
@@ -63,7 +63,7 @@ router.get('/usa', async (req, res) => {
 })
 
 router.get('/uk', async (req, res) => {
-    const apikey = process.env.MEDIASTACK_KEY2;
+    const apikey = process.env.MEDIASTACK_KEY3;
     const apiUrl2 = `http://api.mediastack.com/v1/news?access_key=${apikey}&countries=gb&sources=the mirror, metro`;
 
     try {
