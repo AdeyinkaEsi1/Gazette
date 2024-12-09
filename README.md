@@ -1,0 +1,1 @@
+A backend service built with Express.JS to securely fetch and process news articles from the NewsCatcher API. This backend integrates with a frontend styled with Tailwind CSS, providing a secure intermediary for API requests and delivering structured JSON data.
