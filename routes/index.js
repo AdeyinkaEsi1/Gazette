@@ -1,5 +1,5 @@
 var express = require('express');
-const { response } = require('../app');
+// const { response } = require('../app');
 var router = express.Router();
 
 // GET home page.
@@ -11,9 +11,10 @@ router.get('/hello', function (req, res, next) {
   res.send('Hello, World!'); // Sends a simple response
 });
 
+
 router.post('/submit', function (req, res, next) {
-  const name = req.body.name; // Assuming the form sends a 'name' field
-  res.send(`Hello, ${name}! Your data was submitted.`); // Respond with the submitted data
+  const age = req.body.age; // Assuming the form sends a 'name' field
+  res.send(`Hello, ${age}! Your data was submitted.`); // Respond with the submitted data
 });
 
 
