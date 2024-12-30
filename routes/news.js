@@ -7,17 +7,16 @@ router.get('/', (req, res, next) => {
 })
 
 
-router.get('/newsapi', async (req, res) => {
+router.get('/newsapi/us1', async (req, res) => {
     const apikey = process.env.NEWSAPI_KEY;
-    const apiUrl = `https://newsapi.org/v2/top-headlines/sources?country=gb&apiKey=${apikey}`;
+    const apiUrl1 = `https://newsapi.org/v2/top-headlines?country=us&page=1&apiKey=${apikey}`;
 
     try {
         const fetch = (await import('node-fetch')).default;
-        const response = (await fetch(apiUrl))
+        const response = (await fetch(apiUrl1))
         if (!response.ok) {
             throw new Error(`Error fetching data: ${response.statusText}`)
         }
-
         const data = await response.json();
         res.json(data);
     } catch (error) {
@@ -25,6 +24,48 @@ router.get('/newsapi', async (req, res) => {
         res.status(500).send('Error fetching news')
     }
 });
+
+router.get('/newsapi/us2', async (req, res) => {
+    const apikey = process.env.NEWSAPI_KEY;
+    const apiUrl2 = `https://newsapi.org/v2/top-headlines?country=us&page=2&apiKey=${apikey}`;
+
+    try {
+        const fetch = (await import('node-fetch')).default;
+        const response = (await fetch(apiUrl2))
+        if (!response.ok) {
+            throw new Error(`Error fetching data: ${response.statusText}`)
+        }
+        const data = await response.json();
+        res.json(data);
+    } catch (error) {
+        console.error('Error', error.message);
+        res.status(500).send('Error fetching news')
+    }
+})
+
+
+router.get('/newsapi/ca', async (req, res) => {
+    const apikey = process.env.NEWSAPI_KEY;
+    const apiUrl1 = `https://newsapi.org/v2/top-headlines?country=ca&page=1&apiKey=${apikey}`;
+
+    try {
+        const fetch = (await import('node-fetch')).default;
+        const response = (await fetch(apiUrl1))
+        if (!response.ok) {
+            throw new Error(`Error fetching data: ${response.statusText}`)
+        }
+        const data = await response.json();
+        res.json(data);
+    } catch (error) {
+        console.error('Error', error.message);
+        res.status(500).send('Error fetching news')
+    }
+})
+
+
+
+
+// ----------------------------------------------------------------------------------------------------
 
 router.get('/nigeria', async (req, res) => {
     const apikey = process.env.MEDIASTACK_KEY3;
@@ -79,7 +120,6 @@ router.get('/uk', async (req, res) => {
         res.status(500).send('Error fetching news')
     }
 })
-
 
 module.exports = router
 
